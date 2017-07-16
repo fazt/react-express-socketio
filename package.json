@@ -1,0 +1,32 @@
+{
+  "name": "socket-messages-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "standard": "standard",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "socket.io": "^2.0.3",
+    "webpack": "^3.3.0",
+    "webpack-dev-middleware": "^1.11.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
+}
