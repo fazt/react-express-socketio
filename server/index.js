@@ -2,8 +2,7 @@ import express from "express";
 import http from "http";
 import morgan from "morgan";
 import { Server as SocketServer } from "socket.io";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { resolve, dirname } from "path";
 
 import { PORT } from "./config.js";
 import cors from "cors";
@@ -16,14 +15,13 @@ const io = new SocketServer(server, {
   //   origin: "http://localhost:3000",
   // },
 });
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Middlewares
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(join(__dirname, "../client/build")));
+app.use(express.static(resolve("frontend/dist")));
 
 io.on("connection", (socket) => {
   console.log(socket.id);

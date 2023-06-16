@@ -9,16 +9,16 @@ export default function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const receiveMessage = (message) => {
-      setMessages([message, ...messages]);
-    };
-
-    socket.on("message", receiveMessage);
+    socket.on("message", receiveMessage)
 
     return () => {
       socket.off("message", receiveMessage);
     };
-  }, [messages]);
+  }, []);
+
+  const receiveMessage = (message) =>
+    setMessages(state => [message, ...state]);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,7 +26,7 @@ export default function App() {
       body: message,
       from: "Me",
     };
-    setMessages([newMessage, ...messages]);
+    setMessages(state => [newMessage, ...state]);
     setMessage("");
     socket.emit("message", newMessage.body);
   };
@@ -49,9 +49,8 @@ export default function App() {
           {messages.map((message, index) => (
             <li
               key={index}
-              className={`my-2 p-2 table text-sm rounded-md ${
-                message.from === "Me" ? "bg-sky-700 ml-auto" : "bg-black"
-              }`}
+              className={`my-2 p-2 table text-sm rounded-md ${message.from === "Me" ? "bg-sky-700 ml-auto" : "bg-black"
+                }`}
             >
               <b>{message.from}</b>:{message.body}
             </li>
